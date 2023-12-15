@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="./style/home.css">
+    <title>Inicio</title>
+</head>
+<body>
+    <div class="containerHome">
+        <nav class="menu">
+            <span class="name">Jhon Doe</span>
+            
+            <button id="btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar</button>
+        </nav>
+        <div class="containerItens">
+            <%if(locals.products){%>
+                <% products.forEach(el => {%>
+                    <div class="containerItem">
+                       
+                                <div class="containerTitle">
+                                    <strong><%=el.name%></strong>
+                                    <div class="containerButtons">
+                                        <span id="editBtn" class="option material-symbols-outlined"
+                                        data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                        onclick="handleEdit('<%=el.id%>')"
+                                        >
+                                            edit
+                                        </span>
+                                        <span onclick="handleDelete('<%=el.id%>')" id="deleteBtn" class="option material-symbols-outlined">
+                                            delete
+                                        </span>
+                                    </div>
+                                </div>
+                                <p><%=el.description%></p>
+                                <span>Quantidade: <%=el.qtd%>| Preço unitário: R$ <%=el.unityPrice%> | preço total: R$ <%=el.totalPrice%></span>
+                    </div>
+                    <%})%> 
+                    
+            <%}else{%>
+              
+            <%}%> 
+          
+        </div>
+
+    </div>
+
+<!--Modal de cadastro-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar produtos</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="containerBodyModal modal-body">
+                <input id="name" class="form-control" type="text" name="name" placeholder="Nome">
+                <input id="description" class="form-control" type="text" name="description" placeholder="Descrição">
+                <input id="qtd" class="form-control" type="number" name="quantidade" placeholder="Quantidade">
+                <input id="unityPrice" class="form-control" type="number" name="unityPrice" placeholder="Preço unitário">
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnClose" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" id="btnAdicionar" class="btn btn-primary">Adicionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Modal de edição-->
+    <div class="modal fade" id="modalEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar produtos</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="containerBodyModal modal-body">
+                <input id="EditName" class="form-control" type="text" name="name" placeholder="Nome">
+                <input id="EditDescription" class="form-control" type="text" name="description" placeholder="Descrição">
+                <input id="EditQtd" class="form-control" type="number" name="quantidade" placeholder="Quantidade">
+                <input id="EditUnityPrice" class="form-control" type="number" name="unityPrice" placeholder="Preço unitário">
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="btnClose" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" id="btnSalvar" class="btn btn-primary">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <script src="./scripts/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

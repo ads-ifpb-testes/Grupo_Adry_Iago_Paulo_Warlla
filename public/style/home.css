@@ -1,0 +1,64 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.containerHome {
+    display: flex;
+    flex-direction: column;
+  
+}
+.menu {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#btn {
+    background-color: rgb(22, 22, 22);
+    border: none;
+}
+#btn:hover {
+    background-color: rgb(44, 44, 44);
+}
+.name {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.containerItens {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(174, 174, 174);
+    width: 50rem;
+    padding: 2rem;
+    height: 25rem;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    gap: 0.5rem;
+}
+.containerTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.containerItem {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.option {
+    cursor: pointer;
+}
+.containerBodyModal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
